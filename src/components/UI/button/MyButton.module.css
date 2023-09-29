@@ -1,0 +1,16 @@
+.myButton {
+    padding: 5px 15px;
+    color: rgba(237, 29, 36, 0.733);
+    font-size: 14px;
+    background: transparent;
+    cursor: pointer;
+    border: 1px solid rgb(237, 29, 36);
+    border-radius: 3px;
+    font-family: 'Roboto', sans-serif;
+    transition: transform 200ms ease;
+}
+
+.myButton:hover{
+    background: rgba(253, 62, 62, 0.164);
+    color: #000;
+}

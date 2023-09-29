@@ -1,0 +1,14 @@
+*{
+  margin: 0;
+	padding: 0;
+  font-size: 100%;
+}
+
+body {
+  background-color: rgba(237, 29, 36, 0.175);
+}
+
+#root{
+  display: flex;
+  justify-content: center;
+}
