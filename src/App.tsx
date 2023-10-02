@@ -23,7 +23,6 @@ function App() {
       })
       .then((data) => setHeroes(data.data.results));
   }, []);
-  console.log(heroes);
   return (
     <>
       <div className="App">
