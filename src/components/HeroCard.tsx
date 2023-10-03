@@ -1,4 +1,10 @@
-const HeroCard = (props) => {
+import { Hero } from "../App";
+
+interface HeroCardProps {
+  hero: Hero;
+}
+
+const HeroCard = (props: HeroCardProps) => {
   const img = `${props.hero.thumbnail.path}.${props.hero.thumbnail.extension}`;
   return (
     <div className="HeroCard">
@@ -6,7 +12,7 @@ const HeroCard = (props) => {
         style={{
           width: "250px",
           objectFit: "contain",
-          borderRadius: "10px",
+          borderRadius: "8px",
         }}
         src={img}
         alt="Hero image"

@@ -7,22 +7,38 @@ import MySelect from "./components/UI/select/MySelect";
 import HeroCard from "./components/HeroCard";
 import Footer from "./components/Footer";
 
+// inteface HeroThumbnail {
+//   path: string;
+//   extension: string;
+// };
+
+export interface Hero {
+  id: number;
+  name: string;
+  description: string;
+  thumbnail: {
+    path: string;
+    extension: string;
+  };
+}
+
 function App() {
-  const offset = Math.round(Math.random() * 100);
-  const url = `https://gateway.marvel.com/v1/public/characters?limit=10&offset=${offset}&ts=${
-    import.meta.env.VITE_TS
-  }&apikey=${import.meta.env.VITE_PUBLIC_API_KEY}&hash=${
-    import.meta.env.VITE_HASH
-  }`;
-  const [heroes, setHeroes] = useState([]);
+  const [heroes, setHeroes] = useState<Hero[]>([]);
 
   useEffect(() => {
+    const offset = Math.round(Math.random() * 100);
+    const url = `https://gateway.marvel.com/v1/public/characters?limit=10&offset=${offset}&ts=${
+      import.meta.env.VITE_TS
+    }&apikey=${import.meta.env.VITE_PUBLIC_API_KEY}&hash=${
+      import.meta.env.VITE_HASH
+    }`;
     fetch(url)
       .then((response) => {
         return response.json();
       })
       .then((data) => setHeroes(data.data.results));
   }, []);
+
   return (
     <>
       <div className="App">
@@ -30,7 +46,7 @@ function App() {
         <div style={{ marginTop: "20px" }}></div>
         <div style={{ borderRadius: "10px", backgroundColor: "white" }}>
           <div className="toolbar">
-            <MyInput className="inputNameHero" placeholder="Name hero" />
+            <MyInput placeholder="Name hero" />
             <MyButton></MyButton>
           </div>
           <div className="toolbar">

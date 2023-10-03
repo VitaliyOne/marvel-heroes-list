@@ -1,6 +1,9 @@
 import classes from "./MyInput.module.css";
 
-const MyInput = (props) => {
+interface MyInpit {
+  placeholder: string;
+}
+const MyInput = (props: MyInpit) => {
   return (
     <input
       className={classes.myInput}
