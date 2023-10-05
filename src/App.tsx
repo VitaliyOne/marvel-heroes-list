@@ -7,11 +7,6 @@ import MySelect from "./components/UI/select/MySelect";
 import HeroCard from "./components/HeroCard";
 import Footer from "./components/Footer";
 
-// inteface HeroThumbnail {
-//   path: string;
-//   extension: string;
-// };
-
 export interface Hero {
   id: number;
   name: string;
@@ -47,11 +42,13 @@ function App() {
         <div style={{ borderRadius: "10px", backgroundColor: "white" }}>
           <div className="toolbar">
             <MyInput placeholder="Name hero" />
-            <MyButton></MyButton>
+            <MyButton children="Search"></MyButton>
           </div>
           <div className="toolbar">
-            <MySelect />
-            <MySelect />
+            <MyInput placeholder="Offset" />
+            <MyButton children="Search"></MyButton>
+          </div>
+          <div className="toolbar">
             <MySelect />
           </div>
           <div className="listHeroes">

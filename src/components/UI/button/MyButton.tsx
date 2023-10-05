@@ -1,9 +1,13 @@
 import classes from "./MyButton.module.css";
 
-const MyButton = () => {
+interface MyButtonProps {
+  children: string;
+}
+
+const MyButton = (props: MyButtonProps) => {
   return (
     <button className={classes.myButton} type="button">
-      Search
+      {props.children}
     </button>
   );
 };
