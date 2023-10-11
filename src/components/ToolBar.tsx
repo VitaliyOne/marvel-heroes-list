@@ -2,17 +2,18 @@ import { useState } from "react";
 import MyInput from "./UI/input/MyInput";
 import MyButton from "./UI/button/MyButton";
 
-const ToolBar = () => {
+const ToolBar = ({ getNewOffset }) => {
   const [nameHero, setNameHero] = useState<string>("");
   const [offset, setOffset] = useState<string>("");
 
   const getNameHero = () => {
     setNameHero("");
-    console.log(nameHero);
+    return nameHero;
   };
 
-  const getOffset = () => {
-    console.log(offset);
+  const getOffsetValue = () => {
+    getNewOffset(offset);
+    setOffset(offset);
   };
 
   return (
@@ -38,7 +39,7 @@ const ToolBar = () => {
             setOffset(event.target.value)
           }
         />
-        <MyButton children="Search" onClick={getOffset}></MyButton>
+        <MyButton children="Search" onClick={getOffsetValue}></MyButton>
       </form>
     </div>
   );

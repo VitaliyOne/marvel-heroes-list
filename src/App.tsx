@@ -2,7 +2,6 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import MyButton from "./components/UI/button/MyButton";
 import Header from "./components/Header";
-import MyInput from "./components/UI/input/MyInput";
 import HeroCard from "./components/HeroCard";
 import Footer from "./components/Footer";
 import ToolBar from "./components/ToolBar";
@@ -21,35 +20,52 @@ function App() {
   const [heroes, setHeroes] = useState<Hero[]>([]);
   const [offset, setOffset] = useState<number>(12);
   const offsetUrl = Math.round(Math.random() * 50 * offset);
-  const url = `https://gateway.marvel.com/v1/public/characters?limit=12&offset=${offsetUrl}&ts=${
+  const urlHeroes = `https://gateway.marvel.com/v1/public/characters?limit=12&offset=${offsetUrl}&ts=${
+    import.meta.env.VITE_TS
+  }&apikey=${import.meta.env.VITE_PUBLIC_API_KEY}&hash=${
+    import.meta.env.VITE_HASH
+  }`;
+  const urlNameHero = `https://gateway.marvel.com/v1/public/characters?name=Frenzy&ts=${
     import.meta.env.VITE_TS
   }&apikey=${import.meta.env.VITE_PUBLIC_API_KEY}&hash=${
     import.meta.env.VITE_HASH
   }`;
 
   useEffect(() => {
-    fetch(url)
+    fetch(urlHeroes)
       .then((response) => {
         return response.json();
       })
       .then((data) => setHeroes(data.data.results));
   }, [offset]);
 
+  // const getNextHeroes = () => {
+  //   fetch(urlNameHero)
+  //     .then((response) => {
+  //       return response.json();
+  //     })
+  //     .then((data) => setHeroes([...heroes, ...data.data.results]));
+  // };
+
   const getNextHeroes = () => {
-    fetch(url)
+    fetch(urlNameHero)
       .then((response) => {
         return response.json();
       })
-      .then((data) => setHeroes([...heroes, ...data.data.results]));
-    console.log(heroes);
+      .then((data) => setHeroes(data.data.results));
   };
+
+  // const bottom =
+  //   document.documentElement.scrollHeight -
+  //     document.documentElement.scrollTop ===
+  //   document.documentElement.clientHeight;
 
   return (
     <>
       <div className="App">
         <Header />
         <div className="contentBox">
-          <ToolBar />
+          <ToolBar getNewOffset={(offset: number) => setOffset(offset)} />
           <div className="listHeroes">
             {heroes.map((hero) => (
               <HeroCard hero={hero} key={hero.id} />

@@ -9,12 +9,12 @@
     width: 40%;
 }
 
+.myInput:hover{
+    background: rgba(253, 62, 62, 0.164);
+}
+
 @media (max-width: 600px) {
     .myInput{
         width: 100%;    
     } 
-}
-
-.myInput:hover{
-    background: rgba(253, 62, 62, 0.164);
 }
