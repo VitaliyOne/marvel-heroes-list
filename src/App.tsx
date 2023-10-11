@@ -3,9 +3,9 @@ import { useState, useEffect } from "react";
 import MyButton from "./components/UI/button/MyButton";
 import Header from "./components/Header";
 import MyInput from "./components/UI/input/MyInput";
-import MySelect from "./components/UI/select/MySelect";
 import HeroCard from "./components/HeroCard";
 import Footer from "./components/Footer";
+import ToolBar from "./components/ToolBar";
 
 export interface Hero {
   id: number;
@@ -19,48 +19,45 @@ export interface Hero {
 
 function App() {
   const [heroes, setHeroes] = useState<Hero[]>([]);
+  const [offset, setOffset] = useState<number>(12);
+  const offsetUrl = Math.round(Math.random() * 50 * offset);
+  const url = `https://gateway.marvel.com/v1/public/characters?limit=12&offset=${offsetUrl}&ts=${
+    import.meta.env.VITE_TS
+  }&apikey=${import.meta.env.VITE_PUBLIC_API_KEY}&hash=${
+    import.meta.env.VITE_HASH
+  }`;
 
   useEffect(() => {
-    const offset = Math.round(Math.random() * 100);
-    const url = `https://gateway.marvel.com/v1/public/characters?limit=10&offset=${offset}&ts=${
-      import.meta.env.VITE_TS
-    }&apikey=${import.meta.env.VITE_PUBLIC_API_KEY}&hash=${
-      import.meta.env.VITE_HASH
-    }`;
     fetch(url)
       .then((response) => {
         return response.json();
       })
       .then((data) => setHeroes(data.data.results));
-  }, []);
+  }, [offset]);
+
+  const getNextHeroes = () => {
+    fetch(url)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => setHeroes([...heroes, ...data.data.results]));
+    console.log(heroes);
+  };
 
   return (
     <>
       <div className="App">
         <Header />
-        <div style={{ marginTop: "20px" }}></div>
-        <div style={{ borderRadius: "10px", backgroundColor: "white" }}>
-          <div className="toolbar">
-            <MyInput placeholder="Name hero" />
-            <MyButton children="Search"></MyButton>
-          </div>
-          <div className="toolbar">
-            <MyInput placeholder="Offset" />
-            <MyButton children="Search"></MyButton>
-          </div>
-          <div className="toolbar">
-            <MySelect />
-          </div>
+        <div className="contentBox">
+          <ToolBar />
           <div className="listHeroes">
             {heroes.map((hero) => (
               <HeroCard hero={hero} key={hero.id} />
             ))}
           </div>
+          <MyButton children="Next" onClick={getNextHeroes}></MyButton>
         </div>
-        <div style={{ marginTop: "20px" }}></div>
-        <div>
-          <Footer />
-        </div>
+        <Footer />
       </div>
     </>
   );

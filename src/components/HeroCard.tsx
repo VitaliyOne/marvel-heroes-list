@@ -11,6 +11,7 @@ const HeroCard = (props: HeroCardProps) => {
       <img
         style={{
           width: "250px",
+          height: "250px",
           objectFit: "contain",
           borderRadius: "8px",
         }}
@@ -18,7 +19,6 @@ const HeroCard = (props: HeroCardProps) => {
         alt="Hero image"
       />
       <h3>{props.hero.name}</h3>
-      <p>{props.hero.description}</p>
     </div>
   );
 };
