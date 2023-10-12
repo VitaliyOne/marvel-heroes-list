@@ -1,12 +1,12 @@
 import classes from "./MyInput.module.css";
 
-interface MyInpit {
+interface MyInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   placeholder: string;
   type: string;
   pattern?: string;
   value?: string;
 }
-const MyInput = (props: MyInpit) => {
+const MyInput = (props: MyInputProps) => {
   return (
     <input
       className={classes.myInput}

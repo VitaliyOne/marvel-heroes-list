@@ -6,7 +6,7 @@
 
 body {
   background-color: rgba(237, 29, 36, 0.175);
-  background: url("./public/background.png");
+  background: url(./public/background.png);
   background-repeat: repeat;
   margin: auto;
 }
