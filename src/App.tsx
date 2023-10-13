@@ -21,12 +21,14 @@ function App() {
   const [offset, setOffset] = useState<number>(10);
   const [nameHero, setNameHero] = useState<string>("");
   const offsetUrl = Math.round(Math.random() * 50 * offset);
+
   const urlHeroes = `https://gateway.marvel.com/v1/public/characters?limit=12&offset=${offsetUrl}&ts=${
     import.meta.env.VITE_TS
   }&apikey=${import.meta.env.VITE_PUBLIC_API_KEY}&hash=${
     import.meta.env.VITE_HASH
   }`;
-  const urlNameHero = `https://gateway.marvel.com/v1/public/characters?name=Frenzy&ts=${
+
+  const urlHero = `https://gateway.marvel.com/v1/public/characters?name=${nameHero}&ts=${
     import.meta.env.VITE_TS
   }&apikey=${import.meta.env.VITE_PUBLIC_API_KEY}&hash=${
     import.meta.env.VITE_HASH
@@ -40,20 +42,12 @@ function App() {
       .then((data) => setHeroes(data.data.results));
   }, []);
 
-  // const getNextHeroes = () => {
-  //   fetch(urlNameHero)
-  //     .then((response) => {
-  //       return response.json();
-  //     })
-  //     .then((data) => setHeroes([...heroes, ...data.data.results]));
-  // };
-
   const getNextHeroes = () => {
-    fetch(urlNameHero)
+    fetch(urlHeroes)
       .then((response) => {
         return response.json();
       })
-      .then((data) => setHeroes(data.data.results));
+      .then((data) => setHeroes([...heroes, ...data.data.results]));
   };
 
   const getOffset = () => {
@@ -66,11 +60,6 @@ function App() {
 
   const getHero = () => {
     if (nameHero) {
-      const urlHero = `https://gateway.marvel.com/v1/public/characters?name=${nameHero}&ts=${
-        import.meta.env.VITE_TS
-      }&apikey=${import.meta.env.VITE_PUBLIC_API_KEY}&hash=${
-        import.meta.env.VITE_HASH
-      }`;
       fetch(urlHero)
         .then((response) => {
           return response.json();
