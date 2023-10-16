@@ -40,6 +40,7 @@ function App() {
         return response.json();
       })
       .then((data) => setHeroes(data.data.results));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const getNextHeroes = () => {
@@ -72,10 +73,19 @@ function App() {
     }
   };
 
-  // const bottom =
-  //   document.documentElement.scrollHeight -
-  //     document.documentElement.scrollTop ===
-  //   document.documentElement.clientHeight;
+  // const handleScroll = () => {
+  //   console.log("scroll");
+  //   const bottom =
+  //     document.documentElement.scrollHeight -
+  //       document.documentElement.scrollTop ===
+  //     document.documentElement.clientHeight;
+  //   if (bottom) {
+  //     if (bottom) {
+  //       getNextHeroes();
+  //     }
+  //   }
+  // };
+
   return (
     <>
       <div className="App">
