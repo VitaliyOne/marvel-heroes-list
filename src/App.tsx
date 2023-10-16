@@ -26,7 +26,7 @@ function App() {
   const [heroes, setHeroes] = useState<Hero[]>([]);
   const [offset, setOffset] = useState<number>(10);
   const [nameHero, setNameHero] = useState<string>("");
-  const offsetUrl = Math.round(Math.random() * 50 * offset);
+  const offsetUrl = Math.round(Math.random() * 40 * offset);
 
   const urlHeroes = `https://gateway.marvel.com/v1/public/characters?limit=12&offset=${offsetUrl}&ts=${
     import.meta.env.VITE_TS

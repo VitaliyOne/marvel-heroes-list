@@ -2,6 +2,7 @@ import { Hero } from "../App";
 
 interface HeroCardProps {
   hero: Hero;
+  heroes: Hero[];
 }
 
 const HeroCard = (props: HeroCardProps) => {
@@ -10,7 +11,7 @@ const HeroCard = (props: HeroCardProps) => {
     <div className="HeroCard">
       <img className="imageHeroCard" src={img} alt="Hero image" />
       <h1 style={{ fontSize: "18px", margin: "5px" }}>{props.hero.name}</h1>
-      {props.hero.description !== "" ? (
+      {props.heroes.length === 1 ? (
         <h3
           style={{
             fontSize: "15px",

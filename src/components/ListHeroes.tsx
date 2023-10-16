@@ -1,6 +1,7 @@
 import HeroCard from "./HeroCard";
 import { Hero } from "../App";
 import { useEffect } from "react";
+import InfoListHeroes from "./InfoListHeroes";
 interface ListHeroesProps {
   heroes: Hero[];
   getNextHeroes: () => void;
@@ -8,6 +9,7 @@ interface ListHeroesProps {
 
 const ListHeroes = (props: ListHeroesProps) => {
   useEffect(() => {
+    //scroll processing
     if (props.heroes.length !== 1) {
       const handleScroll = () => {
         if (
@@ -23,42 +25,13 @@ const ListHeroes = (props: ListHeroesProps) => {
       };
     }
   }, [props]);
+
   console.log(props.heroes[0]);
   return (
     <div>
       {props.heroes.length === 1 ? (
         <div>
-          <div className="listHeroes">
-            <div>
-              {props.heroes.map((hero: Hero) => (
-                <HeroCard hero={hero} key={hero.id} />
-              ))}
-            </div>
-            <div className="infoHero">
-              <h2 style={{ margin: "10px" }}>Comics</h2>
-              {props.heroes[0].comics.items.map((comics: { name: string }) => (
-                <p
-                  style={{ textAlign: "start", margin: "10px" }}
-                  key={comics.name}
-                >
-                  • {comics.name}
-                </p>
-              ))}
-            </div>
-            <div className="infoHero">
-              <h2 style={{ margin: "10px" }}>Stories</h2>
-              {props.heroes[0].stories.items.map(
-                (stories: { name: string }) => (
-                  <p
-                    style={{ textAlign: "start", margin: "10px" }}
-                    key={stories.name}
-                  >
-                    • {stories.name}
-                  </p>
-                ),
-              )}
-            </div>
-          </div>
+          <InfoListHeroes heroes={props.heroes} />
         </div>
       ) : (
         <div>
@@ -67,7 +40,7 @@ const ListHeroes = (props: ListHeroesProps) => {
           ) : (
             <div className="listHeroes">
               {props.heroes.map((hero: Hero) => (
-                <HeroCard hero={hero} key={hero.id} />
+                <HeroCard heroes={props.heroes} hero={hero} key={hero.id} />
               ))}
             </div>
           )}
