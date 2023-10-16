@@ -5,6 +5,7 @@ import InfoListHeroes from "./InfoListHeroes";
 interface ListHeroesProps {
   heroes: Hero[];
   getNextHeroes: () => void;
+  clickHeroCard: (name: string) => void;
 }
 
 const ListHeroes = (props: ListHeroesProps) => {
@@ -25,13 +26,14 @@ const ListHeroes = (props: ListHeroesProps) => {
       };
     }
   }, [props]);
-
-  console.log(props.heroes[0]);
   return (
     <div>
       {props.heroes.length === 1 ? (
         <div>
-          <InfoListHeroes heroes={props.heroes} />
+          <InfoListHeroes
+            heroes={props.heroes}
+            clickHeroCard={props.clickHeroCard}
+          />
         </div>
       ) : (
         <div>
@@ -40,7 +42,12 @@ const ListHeroes = (props: ListHeroesProps) => {
           ) : (
             <div className="listHeroes">
               {props.heroes.map((hero: Hero) => (
-                <HeroCard heroes={props.heroes} hero={hero} key={hero.id} />
+                <HeroCard
+                  clickHeroCard={props.clickHeroCard}
+                  heroes={props.heroes}
+                  hero={hero}
+                  key={hero.id}
+                />
               ))}
             </div>
           )}

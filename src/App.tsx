@@ -54,7 +54,7 @@ function App() {
       .then((response) => {
         return response.json();
       })
-      .then((data) => setHeroes([...heroes, ...data.data.results]));
+      .then((data) => setHeroes((prev) => [...prev, ...data.data.results]));
   };
 
   const getOffset = () => {
@@ -79,6 +79,19 @@ function App() {
     }
   };
 
+  const clickHeroCard = (name: string) => {
+    setHeroes([]);
+    const urlHero = `https://gateway.marvel.com/v1/public/characters?name=${name}&ts=${
+      import.meta.env.VITE_TS
+    }&apikey=${import.meta.env.VITE_PUBLIC_API_KEY}&hash=${
+      import.meta.env.VITE_HASH
+    }`;
+    fetch(urlHero)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => setHeroes(data.data.results));
+  };
   return (
     <>
       <div className="App">
@@ -105,7 +118,11 @@ function App() {
               <MyButton children="Search" onClick={getOffset}></MyButton>
             </div>
           </div>
-          <ListHeroes heroes={heroes} getNextHeroes={getNextHeroes} />
+          <ListHeroes
+            clickHeroCard={clickHeroCard}
+            heroes={heroes}
+            getNextHeroes={getNextHeroes}
+          />
         </div>
         <Footer />
       </div>

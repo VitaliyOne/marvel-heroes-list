@@ -3,13 +3,19 @@ import { Hero } from "../App";
 interface HeroCardProps {
   hero: Hero;
   heroes: Hero[];
+  clickHeroCard: (name: string) => void;
 }
 
 const HeroCard = (props: HeroCardProps) => {
   const img = `${props.hero.thumbnail.path}.${props.hero.thumbnail.extension}`;
   return (
     <div className="HeroCard">
-      <img className="imageHeroCard" src={img} alt="Hero image" />
+      <img
+        className="imageHeroCard"
+        src={img}
+        alt="Hero image"
+        onClick={() => props.clickHeroCard(props.hero.name)}
+      />
       <h1 style={{ fontSize: "18px", margin: "5px" }}>{props.hero.name}</h1>
       {props.heroes.length === 1 ? (
         <h3
