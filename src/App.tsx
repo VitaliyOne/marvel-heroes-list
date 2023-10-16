@@ -2,9 +2,9 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import MyButton from "./components/UI/button/MyButton";
 import Header from "./components/Header";
-import HeroCard from "./components/HeroCard";
 import Footer from "./components/Footer";
 import MyInput from "./components/UI/input/MyInput";
+import ListHeroes from "./components/ListHeroes";
 
 export interface Hero {
   id: number;
@@ -51,6 +51,7 @@ function App() {
   };
 
   const getOffset = () => {
+    setHeroes([]);
     fetch(urlHeroes)
       .then((response) => {
         return response.json();
@@ -75,7 +76,6 @@ function App() {
   //   document.documentElement.scrollHeight -
   //     document.documentElement.scrollTop ===
   //   document.documentElement.clientHeight;
-
   return (
     <>
       <div className="App">
@@ -102,12 +102,7 @@ function App() {
               <MyButton children="Search" onClick={getOffset}></MyButton>
             </div>
           </div>
-          <div className="listHeroes">
-            {heroes.map((hero) => (
-              <HeroCard hero={hero} key={hero.id} />
-            ))}
-          </div>
-          <MyButton children="Next" onClick={getNextHeroes}></MyButton>
+          <ListHeroes heroes={heroes} getNextHeroes={getNextHeroes} />
         </div>
         <Footer />
       </div>

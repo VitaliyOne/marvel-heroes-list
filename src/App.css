@@ -27,14 +27,16 @@
   background-color: white;
   border-radius: 0 0 10px 10px;
   justify-items: center;
+  margin: 15px 0;
 }
 
 .HeroCard{
   margin: 10px;
   max-width: 250px;
-  border: 1px solid rgba(237, 29, 36, 0.733);
+  /* border: 1px solid rgba(237, 29, 36, 0.733); */
   border-radius: 9px;
-}
+  box-shadow: 0px 0px 20px 8px #0a0a0a;
+  }
 
 .Footer{
   margin-top: 20px;
@@ -51,3 +53,4 @@
   margin-top: 20px;
   padding-bottom: 10px;
 }
+
