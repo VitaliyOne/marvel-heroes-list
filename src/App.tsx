@@ -14,6 +14,12 @@ export interface Hero {
     path: string;
     extension: string;
   };
+  comics: {
+    items: [];
+  };
+  stories: {
+    items: [];
+  };
 }
 
 function App() {
@@ -72,19 +78,6 @@ function App() {
       alert("Enter a name");
     }
   };
-
-  // const handleScroll = () => {
-  //   console.log("scroll");
-  //   const bottom =
-  //     document.documentElement.scrollHeight -
-  //       document.documentElement.scrollTop ===
-  //     document.documentElement.clientHeight;
-  //   if (bottom) {
-  //     if (bottom) {
-  //       getNextHeroes();
-  //     }
-  //   }
-  // };
 
   return (
     <>
