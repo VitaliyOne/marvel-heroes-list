@@ -54,3 +54,27 @@
   padding-bottom: 10px;
 }
 
+.imageHeroCard{
+  width: 250px;
+  height: 250px;
+  border-radius: 8px;
+}
+
+.spinner {
+  margin: 10px auto 10px auto;
+  width: 50px;
+  height: 50px;
+  border: 5px solid;
+  border-color: #f13d55 transparent #f13d55 transparent;
+  border-radius: 50%;
+  animation: spin-anim 1s linear infinite;
+}
+
+@keyframes spin-anim {
+  0% {
+      transform: rotate(0deg);
+  }
+  100% {
+      transform: rotate(360deg);
+  }
+}
