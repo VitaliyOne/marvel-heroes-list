@@ -85,3 +85,15 @@
       transform: rotate(360deg);
   }
 }
+
+h3 {
+  font-size: 15px;
+  margin: 0 15px 0 15px;
+  padding-bottom: 10px;
+  text-align: justify;
+}
+
+h1 {
+  margin: 5px;
+  font-size: 18px;
+}

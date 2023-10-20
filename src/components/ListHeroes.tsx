@@ -41,12 +41,13 @@ const ListHeroes = (props: ListHeroesProps) => {
             <div className="spinner"></div>
           ) : (
             <div className="listHeroes">
-              {props.heroes.map((hero: Hero) => (
+              {props.heroes.map((hero: Hero, index: number) => (
                 <HeroCard
+                  numberHero={index + 1}
                   clickHeroCard={props.clickHeroCard}
                   heroes={props.heroes}
                   hero={hero}
-                  key={hero.id}
+                  key={index}
                 />
               ))}
             </div>

@@ -4,6 +4,7 @@ interface HeroCardProps {
   hero: Hero;
   heroes: Hero[];
   clickHeroCard: (name: string) => void;
+  numberHero?: number;
 }
 
 const HeroCard = (props: HeroCardProps) => {
@@ -16,21 +17,8 @@ const HeroCard = (props: HeroCardProps) => {
         alt="Hero image"
         onClick={() => props.clickHeroCard(props.hero.name)}
       />
-      <h1 style={{ fontSize: "18px", margin: "5px" }}>{props.hero.name}</h1>
-      {props.heroes.length === 1 ? (
-        <h3
-          style={{
-            fontSize: "15px",
-            margin: "0 15px 0 15px",
-            paddingBottom: "10px",
-            textAlign: "justify",
-          }}
-        >
-          {props.hero.description}
-        </h3>
-      ) : (
-        ""
-      )}
+      <h1>{props.hero.name}</h1>
+      {props.heroes.length === 1 ? <h3>{props.hero.description}</h3> : ""}
     </div>
   );
 };
