@@ -93,7 +93,17 @@ h3 {
   text-align: justify;
 }
 
+h2{
+  margin: 10px;
+  text-align: center;
+}
+
 h1 {
   margin: 5px;
   font-size: 18px;
+}
+
+.pInfoListHeroes{
+  text-align: start;
+  margin: 10px;
 }

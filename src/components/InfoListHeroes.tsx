@@ -20,26 +20,20 @@ const InfoListHeroes = (props: InfoListHeroesProps) => {
         ))}
       </div>
       <div className="infoHero">
-        <h2 style={{ margin: "10px" }}>Comics</h2>
+        <h2>Comics</h2>
         {props.heroes[0].comics.items.map(
           (comics: { name: string; resourceURI: string }) => (
-            <p
-              style={{ textAlign: "start", margin: "10px" }}
-              key={comics.resourceURI}
-            >
+            <p className="pInfoListHeroes" key={comics.resourceURI}>
               • {comics.name}
             </p>
           ),
         )}
       </div>
       <div className="infoHero">
-        <h2 style={{ margin: "10px" }}>Stories</h2>
+        <h2>Stories</h2>
         {props.heroes[0].stories.items.map(
           (stories: { name: string; resourceURI: string }) => (
-            <p
-              style={{ textAlign: "start", margin: "10px" }}
-              key={stories.resourceURI}
-            >
+            <p className="pInfoListHeroes" key={stories.resourceURI}>
               • {stories.name}
             </p>
           ),

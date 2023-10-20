@@ -1,8 +1,9 @@
 const Footer = () => {
   return (
     <footer className="Footer">
-      <div style={{ left: "0" }}>
-        <a>Email: vitaliy.one.gm@gmail.com</a> <br />
+      <div>
+        <a>Email: vitaliy.one.gm@gmail.com</a>
+        <br />
         <p>
           GitHub:
           <a
