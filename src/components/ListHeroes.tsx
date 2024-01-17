@@ -2,6 +2,7 @@ import HeroCard from "./HeroCard";
 import { Hero } from "../App";
 import { useEffect } from "react";
 import InfoListHeroes from "./InfoListHeroes";
+import MyButton from "./UI/button/MyButton";
 interface ListHeroesProps {
   heroes: Hero[];
   getNextHeroes: () => void;
@@ -40,16 +41,22 @@ const ListHeroes = (props: ListHeroesProps) => {
           {!props.heroes.length ? (
             <div className="spinner"></div>
           ) : (
-            <div className="listHeroes">
-              {props.heroes.map((hero: Hero, index: number) => (
-                <HeroCard
-                  numberHero={index + 1}
-                  clickHeroCard={props.clickHeroCard}
-                  heroes={props.heroes}
-                  hero={hero}
-                  key={index}
-                />
-              ))}
+            <div>
+              <div className="listHeroes">
+                {props.heroes.map((hero: Hero, index: number) => (
+                  <HeroCard
+                    numberHero={index + 1}
+                    clickHeroCard={props.clickHeroCard}
+                    heroes={props.heroes}
+                    hero={hero}
+                    key={index}
+                  />
+                ))}
+              </div>
+              <MyButton
+                children="Next"
+                onClick={props.getNextHeroes}
+              ></MyButton>
             </div>
           )}
         </div>

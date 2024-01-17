@@ -1,25 +1,30 @@
 import classes from "./MySelect.module.css";
 
-const MySelect = () => {
-  const defaultValue = "default";
-  const onChange = (value: string) => {
-    console.log(value);
-  };
+interface Select {
+  defaultValue: string;
+  value: string;
+  option: {
+    value: string;
+    name: string;
+  }[];
+  onChange: (event: string) => void;
+}
 
+const MySelect = (props: Select) => {
   return (
     <select
-      value="value"
-      onChange={(event) => onChange(event.target.value)}
+      value={props.value}
+      onChange={(event) => props.onChange(event.target.value)}
       className={classes.mySelect}
     >
       <option disabled value="">
-        {defaultValue}
+        {props.defaultValue}
       </option>
-      {/* {option.map((option) => (
+      {props.option.map((option) => (
         <option key={option.value} value={option.value}>
           {option.name}
         </option>
-      ))} */}
+      ))}
     </select>
   );
 };

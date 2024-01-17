@@ -7,6 +7,7 @@ import MyInput from "./components/UI/input/MyInput";
 import ListHeroes from "./components/ListHeroes";
 
 export interface Hero {
+  index: number;
   id: number;
   name: string;
   description: string;

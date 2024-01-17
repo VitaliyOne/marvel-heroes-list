@@ -12,6 +12,12 @@
   background-color: rgba(237, 29, 36, 0.175);
 }
 
+@media (max-width: 600px) {
+  .Header{
+    height: 125px;
+  }
+}
+
 .toolbar {
   padding: 10px 20px;
   display: flex;
