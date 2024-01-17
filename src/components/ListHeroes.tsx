@@ -7,6 +7,7 @@ interface ListHeroesProps {
   heroes: Hero[];
   getNextHeroes: () => void;
   clickHeroCard: (name: string) => void;
+  clickBack?: () => void;
 }
 
 const ListHeroes = (props: ListHeroesProps) => {
@@ -34,6 +35,7 @@ const ListHeroes = (props: ListHeroesProps) => {
           <InfoListHeroes
             heroes={props.heroes}
             clickHeroCard={props.clickHeroCard}
+            clickBack={props.clickBack}
           />
         </div>
       ) : (

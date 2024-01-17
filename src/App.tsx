@@ -25,6 +25,7 @@ export interface Hero {
 
 function App() {
   const [heroes, setHeroes] = useState<Hero[]>([]);
+  const [hero, setHero] = useState<Hero[]>([]);
   const [offset, setOffset] = useState<number>(10);
   const [nameHero, setNameHero] = useState<string>("");
   const offsetUrl = Math.round(Math.random() * 40 * offset);
@@ -81,7 +82,6 @@ function App() {
   };
 
   const clickHeroCard = (name: string) => {
-    setHeroes([]);
     const urlHero = `https://gateway.marvel.com/v1/public/characters?name=${name}&ts=${
       import.meta.env.VITE_TS
     }&apikey=${import.meta.env.VITE_PUBLIC_API_KEY}&hash=${
@@ -91,8 +91,15 @@ function App() {
       .then((response) => {
         return response.json();
       })
-      .then((data) => setHeroes(data.data.results));
+      .then((data) => setHero(data.data.results))
+      .then(() => window.scrollTo(0, 0));
   };
+
+  const clickBack = () => {
+    window.scrollTo(0, 0);
+    setHero([]);
+  };
+
   return (
     <>
       <div className="App">
@@ -119,11 +126,20 @@ function App() {
               <MyButton children="Search" onClick={getOffset}></MyButton>
             </div>
           </div>
-          <ListHeroes
-            clickHeroCard={clickHeroCard}
-            heroes={heroes}
-            getNextHeroes={getNextHeroes}
-          />
+          {hero.length === 0 ? (
+            <ListHeroes
+              clickHeroCard={clickHeroCard}
+              heroes={heroes}
+              getNextHeroes={getNextHeroes}
+            />
+          ) : (
+            <ListHeroes
+              clickHeroCard={clickHeroCard}
+              heroes={hero}
+              getNextHeroes={getNextHeroes}
+              clickBack={clickBack}
+            />
+          )}
         </div>
         <Footer />
       </div>
