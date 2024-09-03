@@ -1,4 +1,4 @@
-import logo from "/public/marvel-logo2.png";
+import logo from "/public/marvel-logo2.webp";
 
 const Header = () => {
   return (
