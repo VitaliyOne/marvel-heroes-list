@@ -1,6 +1,6 @@
 ## Marvel-heroes-list
 
-Live demo: https://post-builder.vercel.app/
+Live demo: https://marvel-heroes-list.vercel.app/
 
 ## Installation
 
